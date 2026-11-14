@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collage Admission Form</title>
+</head>
+<body>
+    <h2>College Admission Registration Form</h2>
+    <p>Fill out this form to register for college admission.</p>
+
+    <form>
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            Full Name:
+            <input type="text" name="fullname" required>
+            <br><br>
+
+            Email:
+            <input type="email" name="email" required>
+            <br><br>
+
+            Phone Number:
+            <input type="tel" name="phone" required>
+            <br><br>
+
+            Date of Birth:
+            <input type="date" name="dob" required>
+            <br><br>
+
+            Password:
+            <input type="password" name="password" required>
+            <br><br>
+
+            Gender:
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Other"> Other
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Academic Details</legend>
+
+            Select Course:
+            <select name="course" required>
+                <option value="">Choose Course</option>
+                <option>B.Tech CSE</option>
+                <option>B.Tech AI/ML</option>
+                <option>BBA</option>
+                <option>BCA</option>
+            </select>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Interests</legend>
+
+            <input type="checkbox" name="interest" value="Coding"> Coding
+            <br>
+            <input type="checkbox" name="interest" value="Sports"> Sports
+            <br>
+            <input type="checkbox" name="interest" value="Music"> Music
+            <br>
+            <input type="checkbox" name="interest" value="Reading"> Reading
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Address and Documents</legend>
+
+            Address:
+            <br>
+            <textarea name="address" rows="4" cols="30"></textarea>
+            <br><br>
+
+            Upload Photograph:
+            <input type="file" name="photo">
+            <br><br>
+
+            Upload Supporting Documents:
+            <input type="file" name="documents">
+
+        </fieldset>
+
+        <br>
+
+        <input type="checkbox" name="declaration" required>
+        I declare that all the information provided is correct.
+
+        <br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+</body>
+</html>
