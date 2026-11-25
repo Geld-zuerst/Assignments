@@ -1,0 +1,151 @@
+// String And Array Problem Solving Kit!
+
+// 1. Reverse a string
+function reverseString(str) {
+    let res = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        res += str[i];
+    }
+    return res;
+}
+console.log("reverseString:", reverseString("Harsh"));
+// Output: reverseString: hsraH
+
+
+// 2. Check Palindrome
+function checkPalindrome(str) {
+    let rev = str.split("").reverse().join("");
+    return rev === str;
+}
+console.log("checkPalindrome:", checkPalindrome("madam"));
+// Output: checkPalindrome: true
+
+
+// 3. Count Vowels
+function countchar(str) {
+    let char = ["a", "i", "e", "o", "u", "A", "E", "I", "O", "U"];
+    let vowel = 0;
+    let consonent = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        if (char.includes(str[i])) {
+            vowel++;
+        } else {
+            consonent++;
+        }
+    }
+
+    return {
+        vowels: vowel,
+        consonent: consonent
+    };
+}
+console.log(countchar("Godzilla"));
+// Output: { vowels: 3, consonent: 5 }
+
+
+// 4. Find second largest
+function secondLargest(arr) {
+    let largest = arr[0];
+    let second = -Infinity;
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            second = largest;
+            largest = arr[i];
+        } else if (arr[i] > second && arr[i] < largest) {
+            second = arr[i];
+        }
+    }
+
+    return second;
+}
+console.log("secondLargest:", secondLargest([10, 5, 30, 20, 8, 30]));
+// Output: secondLargest: 10
+
+
+// 5. Remove Duplicates
+function removeDuplicates(arr) {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let found = false;
+
+        for (let j = 0; j < result.length; j++) {
+            if (arr[i] === result[j]) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+console.log("removeDuplicate:", removeDuplicates([1, 2, 2, 3, 1]));
+// Output: removeDuplicate: [1, 2, 3]
+
+
+// 6. Sum of even numbers
+function sumEvenNumbers(arr) {
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            sum += arr[i];
+        }
+    }
+
+    return sum;
+}
+console.log("evenNumbersSum:", sumEvenNumbers([1, 2, 3, 4, 5, 8]));
+// Output: evenNumbersSum: 14
+
+
+// 7. Count frequency
+function countFrequency(arr, number) {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === number) {
+            count++;
+        }
+    }
+
+    return count;
+}
+console.log("FrequencyCount:", countFrequency([1, 2, 2, 3, 2, 4], 2));
+// Output: FrequencyCount: 3
+
+
+// 8. Check anagram
+function areAnagrams(str1, str2) {
+    str1 = str1.toLowerCase().split("").sort().join("");
+    str2 = str2.toLowerCase().split("").sort().join("");
+    return str1 === str2;
+}
+console.log("checkAnagram:", areAnagrams("listen", "silent"));
+// Output: checkAnagram: true
+
+
+// 9. Move zeros
+function moveZeros(arr) {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== 0) {
+            result.push(arr[i]);
+        } else {
+            result.push(arr.shift());
+            arr.push(arr.shift());
+            i--;
+        }
+    }
+
+    return result;
+}
+console.log("moveZeros:", moveZeros([0, 1, 0, 3, 5]));
+// Output: moveZeros: [0, 0, 5, 1, 3]
