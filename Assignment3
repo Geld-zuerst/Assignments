@@ -1,0 +1,153 @@
+// Callback-Based Utility System
+
+// 1. Function that passes each array element to a callback
+function processArray(arr, callback) {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let value = callback(arr[i]);
+
+        if (value !== null) {
+            result.push(value);
+        }
+    }
+
+    return result;
+}
+
+
+// 2. Use processArray() to square every number
+let numbers = [5, 6, 7, 8];
+
+let squares = processArray(numbers, function (n) {
+    return n * n;
+});
+console.log("Square:", squares);
+// Output: [25, 36, 49, 64]
+
+
+// 3. Use processArray() to return only even numbers
+let evenNumbers = processArray(numbers, function (n) {
+    if (n % 2 === 0) {
+        return n;
+    } else {
+        return null;
+    }
+});
+console.log("Even Numbers:", evenNumbers);
+// Output: [6, 8]
+
+
+// 4. Function that passes string to callback
+function processString(str, callback) {
+    return callback(str);
+}
+
+
+// 5. Callback to convert a string to uppercase
+let upperCase = processString("hello world", function (str) {
+    return str.toUpperCase();
+});
+console.log("Upper Case:", upperCase);
+// Output: HELLO WORLD
+
+
+// 6. Callback to count the number of words in a sentence
+let wordCount = processString("Hello world", function (str) {
+    str = str.trim();
+
+    if (str === "") {
+        return 0;
+    }
+
+    return str.split(/\s+/).length;
+});
+console.log("Word Count:", wordCount);
+// Output: 2
+
+
+// Q7. Create a function calculate(a, b, callback)
+function calculate(a, b, callback) {
+    return callback(a, b);
+}
+
+
+// 8. Use calculate() for addition, subtraction, multiplication and division
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        return "Cannot divide by zero";
+    }
+    return a / b;
+}
+
+console.log("Addition:", calculate(20, 10, add));
+console.log("Subtraction:", calculate(20, 10, subtract));
+console.log("Multiplication:", calculate(20, 10, multiply));
+console.log("Division:", calculate(20, 10, divide));
+
+// Output:
+// Addition: 30
+// Subtraction: 10
+// Multiplication: 200
+// Division: 2
+
+
+// Q9. Function to find element
+function findElement(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i])) {
+            return arr[i];
+        }
+    }
+    return undefined;
+}
+
+let result = findElement([10, 15, 20, 25], function (n) {
+    return n > 18;
+});
+console.log("ElementFind:", result);
+// Output: 20
+
+
+// Bonus Challenge: Menu-Driven Calculator
+function menuCalculator(choice, a, b) {
+    switch (choice) {
+        case 1:
+            return calculate(a, b, add);
+
+        case 2:
+            return calculate(a, b, subtract);
+
+        case 3:
+            return calculate(a, b, multiply);
+
+        case 4:
+            return calculate(a, b, divide);
+
+        default:
+            return "Invalid choice";
+    }
+}
+
+console.log("Addition:", menuCalculator(1, 10, 5));
+console.log("Subtraction:", menuCalculator(2, 10, 5));
+console.log("Multiplication:", menuCalculator(3, 10, 5));
+console.log("Division:", menuCalculator(4, 10, 5));
+
+// Output:
+// Addition: 15
+// Subtraction: 5
+// Multiplication: 50
+// Division: 2
